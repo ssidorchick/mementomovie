@@ -6,7 +6,9 @@ var mongoose = require('mongoose'),
 var MovieSchema = new Schema({
   name: String,
   theatrical_release_date: Date,
-  description: String
+  square_image: {
+    w380: String
+  }
 });
 
 module.exports = mongoose.model('Movie', MovieSchema);
