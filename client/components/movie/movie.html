@@ -1,0 +1,6 @@
+<img ng-src="{{data.square_image.w380}}">
+<a href="#">{{data.name}}
+  <span ng-show="!!data.theatrical_release_date">
+    ({{data.theatrical_release_date | date:'yyyy-MM-dd'}})
+  </span>
+</a>

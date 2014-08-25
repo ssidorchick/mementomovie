@@ -8,6 +8,10 @@ angular.module('mementoMovieApp')
       $scope.awesomeThings = awesomeThings;
     });
 
+    $http.get('/api/movies').success(function(movies) {
+      $scope.movies = movies;
+    });
+
     $scope.addThing = function() {
       if($scope.newThing === '') {
         return;
