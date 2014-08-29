@@ -1,14 +1,16 @@
 'use strict';
 
 angular.module('mementoMovieApp')
-  .directive('movie', function () {
+  .directive('movie', function (Auth) {
     return {
       templateUrl: 'components/movie/movie.html',
       restrict: 'EA',
       scope: {
-        data: '='
+        data: '=',
+        pin: '&'
       },
       link: function (scope, element, attrs) {
+        scope.isLoggedIn = Auth.isLoggedIn;
       }
     };
   });

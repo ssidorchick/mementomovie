@@ -6,6 +6,7 @@
 'use strict';
 
 var User = require('../api/user/user.model'),
+    Profile = require('../api/profile/profile.model'),
     Movie = require('../api/movie/movie.model');
 
 User.find({}).remove(function() {
@@ -24,6 +25,10 @@ User.find({}).remove(function() {
       console.log('finished populating users');
     }
   );
+});
+
+Profile.find({}).remove(function() {
+  console.log('finished removing existing profiles');
 });
 
 Movie.find({}).remove(function() {

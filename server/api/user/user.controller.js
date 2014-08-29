@@ -1,6 +1,7 @@
 'use strict';
 
 var User = require('./user.model');
+var Profile = require('../profile/profile.model');
 var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
@@ -29,6 +30,12 @@ exports.create = function (req, res, next) {
   newUser.role = 'user';
   newUser.save(function(err, user) {
     if (err) return validationError(res, err);
+
+    var profile = new Profile({ userId: user._id });
+    profile.save(function(err) {
+      return res.send(500, err);
+    });
+
     var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
     res.json({ token: token });
   });
