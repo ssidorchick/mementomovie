@@ -15,7 +15,7 @@ ProfileSchema.statics.findByUser = function(user, cb) {
 
 ProfileSchema.statics.pinMovie = function(profile, movieId, cb) {
   Movie.findById(movieId, function(err, movie) {
-    if (err) return cb(err);
+    if (err) { return cb(err); }
 
     profile.movies.push(movie);
     profile.save(function(err) {
@@ -26,7 +26,7 @@ ProfileSchema.statics.pinMovie = function(profile, movieId, cb) {
 
 ProfileSchema.statics.unpinMovie = function(profile, movieId, cb) {
   Movie.findById(movieId, function(err, movie) {
-    if (err) return cb(err);
+    if (err) { return cb(err); }
 
     profile.movies.remove(movieId);
     profile.save(function(err) {

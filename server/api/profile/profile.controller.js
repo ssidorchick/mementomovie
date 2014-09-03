@@ -13,6 +13,36 @@ exports.showMovies = function(req, res) {
     });
 };
 
+exports.pinMovie = function(req, res) {
+  var movieId = req.body.movieId;
+
+  Profile.findByUser(req.user)
+    .exec(function (err, profile) {
+      if (err) { return next(err); }
+
+      Profile.pinMovie(profile, movieId, function(err) {
+        if (err) return next(err);
+
+        res.send(200);
+      });
+    });
+};
+
+exports.unpinMovie = function(req, res) {
+  var movieId = req.body.movieId;
+
+  Profile.findByUser(req.user)
+    .exec(function (err, profile) {
+      if (err) return next(err);
+
+      Profile.unpinMovie(profile, movieId, function(err) {
+        if (err) return next(err);
+
+        res.send(200);
+      });
+    });
+};
+
 function handleError(res, err) {
   return res.send(500, err);
 }

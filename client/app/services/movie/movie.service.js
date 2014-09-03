@@ -1,51 +1,24 @@
 'use strict';
 
 angular.module('mementoMovieApp')
-  .service('Movie', function ($http, $q, Auth) {
-    var updatePinState = function(all, pinned) {
-      var ids = _.pluck(pinned, '_id');
-      var shouldBePinned = _.filter(all, function(movie) {
-        return _.contains(ids, movie._id);
+  .service('Movie', function ($http, $q, Auth, Profile) {
+    var fetchMovies = function() {
+      return $http.get('/api/movies')
+        .then(function(res) { return res.data; });
+    };
+
+    var populateProfileMovies = function(result) {
+      return result[0].map(function(movie) {
+        return _.find(result[1], { _id: movie._id }) || movie;
       });
-      shouldBePinned.forEach(function(movie) { movie.pinned = true; });
     };
 
     this.getAll = function() {
-      return $http.get('/api/movies')
-        .then(function(res) {
-          var all = res.data;
-          if (Auth.isLoggedIn()) {
-            return $http.get('/api/profiles/movies')
-              .then(function(res) {
-                updatePinState(all, res.data);
-                return all;
-              });
-          } else {
-            var deferred = $q.defer();
-            deferred.resolve(all);
-            return deferred.promise;
-          }
-        });
-    };
-
-    this.getProfile = function() {
-      return $http.get('/api/profiles/movies')
-        .then(function(res) {
-          var movies = res.data;
-          movies.forEach(function(movie) {
-            movie.pinned = true;
-          });
-          return movies;
-        });
-    };
-
-    this.pin = function(movie) {
-      $http.post('/api/movies/pin', { movieId: movie._id });
-      movie.pinned = true;
-    };
-
-    this.unpin = function(movie) {
-      $http.post('/api/movies/unpin', { movieId: movie._id });
-      movie.pinned = false;
+      if (Auth.isLoggedIn()) {
+        return $q.all([fetchMovies(), Profile.getMovies()])
+          .then(populateProfileMovies);
+      } else {
+        return fetchMovies();
+      }
     };
   });

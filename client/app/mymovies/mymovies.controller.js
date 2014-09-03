@@ -1,17 +1,17 @@
 'use strict';
 
 angular.module('mementoMovieApp')
-  .controller('MymoviesCtrl', function ($scope, Movie) {
-    Movie.getProfile().then(function(movies) {
+  .controller('MymoviesCtrl', function ($scope, Profile) {
+    Profile.getMovies().then(function(movies) {
       $scope.movies = movies;
     });
 
     $scope.pinMovie = function(movie) {
-      Movie.pin(movie);
+      Profile.pinMovie(movie);
     };
 
     $scope.unpinMovie = function(movie) {
-      Movie.unpin(movie);
+      Profile.unpinMovie(movie);
       $scope.movies = _.without($scope.movies, movie);
     };
   });
