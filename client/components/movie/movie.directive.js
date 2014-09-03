@@ -7,7 +7,8 @@ angular.module('mementoMovieApp')
       restrict: 'EA',
       scope: {
         data: '=',
-        pin: '&'
+        pin: '&',
+        unpin: '&'
       },
       link: function (scope, element, attrs) {
         scope.isLoggedIn = Auth.isLoggedIn;

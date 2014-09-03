@@ -33,11 +33,11 @@ exports.create = function (req, res, next) {
 
     var profile = new Profile({ userId: user._id });
     profile.save(function(err) {
-      return res.send(500, err);
-    });
+      if (err) return res.send(500, err);
 
-    var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
-    res.json({ token: token });
+      var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
+      res.json({ token: token });
+    });
   });
 };
 

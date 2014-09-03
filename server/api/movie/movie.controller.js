@@ -17,18 +17,31 @@ exports.index = function(req, res) {
 exports.pin = function(req, res) {
   var movieId = req.body.movieId;
 
-  Profile.findByUser(req.user, function (err, profile) {
-    if (err) return next(err);
-    if (!profile) {
-      profile = new Profile({ userId: req.user.id });
-    }
+  Profile.findByUser(req.user)
+    .exec(function (err, profile) {
+      if (err) { return next(err); }
 
-    Profile.pinMovie(profile, movieId, function(err) {
+      Profile.pinMovie(profile, movieId, function(err) {
+        if (err) return next(err);
+
+        res.send(200);
+      });
+    });
+};
+
+exports.unpin = function(req, res) {
+  var movieId = req.body.movieId;
+
+  Profile.findByUser(req.user)
+    .exec(function (err, profile) {
       if (err) return next(err);
 
-      res.send(200);
+      Profile.unpinMovie(profile, movieId, function(err) {
+        if (err) return next(err);
+
+        res.send(200);
+      });
     });
-  });
 };
 
 function handleError(res, err) {

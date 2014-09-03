@@ -4,4 +4,5 @@
     ({{data.theatrical_release_date | date:'yyyy-MM-dd'}})
   </span>
 </a>
-<button ng-show="isLoggedIn()" ng-click="pin(this)" class="btn btn-default">Pin</button>
+<button ng-show="isLoggedIn() && !data.pinned" ng-click="pin(this)" class="btn btn-default">Pin</button>
+<button ng-show="isLoggedIn() && data.pinned" ng-click="unpin(this)" class="btn btn-default">Unpin</button>

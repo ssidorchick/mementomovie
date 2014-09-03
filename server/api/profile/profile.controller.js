@@ -8,10 +8,9 @@ exports.showMovies = function(req, res) {
     .populate('movies')
     .exec(function(err, profile) {
       if (err) { return handleError(res, err); }
-      if (!profile) { return; }
 
       return res.json(profile.movies);
-  });
+    });
 };
 
 function handleError(res, err) {

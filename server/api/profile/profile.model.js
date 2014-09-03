@@ -10,7 +10,7 @@ var ProfileSchema = new Schema({
 });
 
 ProfileSchema.statics.findByUser = function(user, cb) {
-  return this.findOne({ userId: user.id }, cb);
+  return this.findOne({ userId: user.id });
 };
 
 ProfileSchema.statics.pinMovie = function(profile, movieId, cb) {
@@ -18,6 +18,17 @@ ProfileSchema.statics.pinMovie = function(profile, movieId, cb) {
     if (err) return cb(err);
 
     profile.movies.push(movie);
+    profile.save(function(err) {
+      return cb(err);
+    });
+  });
+};
+
+ProfileSchema.statics.unpinMovie = function(profile, movieId, cb) {
+  Movie.findById(movieId, function(err, movie) {
+    if (err) return cb(err);
+
+    profile.movies.remove(movieId);
     profile.save(function(err) {
       return cb(err);
     });
