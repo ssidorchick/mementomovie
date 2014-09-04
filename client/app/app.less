@@ -15,11 +15,17 @@
     padding: 0.2em 0;
 }
 
+@screen-sm-min: 600px;
+
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-    .container {
-        max-width: 730px;
-    }
+.container {
+  @media screen and (min-width: 600px) {
+    max-width: 100%;
+  }
+
+  @media screen and (min-width: 1024px) {
+    max-width: 1000px;
+  }
 }
 
 // injector
