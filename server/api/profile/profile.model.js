@@ -13,7 +13,7 @@ ProfileSchema.statics.findByUser = function(user, cb) {
   return this.findOne({ userId: user.id });
 };
 
-ProfileSchema.statics.pinMovie = function(profile, movieId, cb) {
+ProfileSchema.statics.followMovie = function(profile, movieId, cb) {
   Movie.findById(movieId, function(err, movie) {
     if (err) { return cb(err); }
 
@@ -24,7 +24,7 @@ ProfileSchema.statics.pinMovie = function(profile, movieId, cb) {
   });
 };
 
-ProfileSchema.statics.unpinMovie = function(profile, movieId, cb) {
+ProfileSchema.statics.unfollowMovie = function(profile, movieId, cb) {
   Movie.findById(movieId, function(err, movie) {
     if (err) { return cb(err); }
 

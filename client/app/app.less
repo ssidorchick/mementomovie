@@ -15,16 +15,23 @@
     padding: 0.2em 0;
 }
 
+@grid-gutter-width: 16px;
 @screen-sm-min: 600px;
 
 /* Responsive: Portrait tablets and up */
 .container {
-  @media screen and (min-width: 600px) {
+  @media (min-width: @screen-sm-min) {
     max-width: 100%;
   }
 
-  @media screen and (min-width: 1024px) {
-    max-width: 1000px;
+  @media (min-width: @screen-md-min) {
+    max-width: @screen-md-min;
+    width: auto;
+  }
+
+  @media (min-width: @screen-lg-min) {
+    max-width: @screen-md-min;
+    width: auto;
   }
 }
 

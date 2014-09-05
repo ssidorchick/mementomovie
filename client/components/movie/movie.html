@@ -1,8 +1,9 @@
 <img ng-src="{{data.square_image.w380}}">
-<a href="#">{{data.name}}
-  <span ng-show="!!data.theatrical_release_date">
-    ({{data.theatrical_release_date | date:'yyyy-MM-dd'}})
-  </span>
-</a>
-<button ng-show="isLoggedIn() && !data.pinned" ng-click="pin(this)" class="btn btn-default">Pin</button>
-<button ng-show="isLoggedIn() && data.pinned" ng-click="unpin(this)" class="btn btn-default">Unpin</button>
+<div class="meta">
+  <div class="info">
+    <span class="name">{{data.name}}</span>
+    <span class="release">{{data.theatrical_release_date | date:'yyyy-MM-dd'}}</span>
+  </div>
+</div>
+<button ng-show="isLoggedIn() && !data.following" ng-click="follow(this)" class="btn-follow">Follow</button>
+<button ng-show="isLoggedIn() && data.following" ng-click="unfollow(this)" class="btn-follow following">Unfollow</button>

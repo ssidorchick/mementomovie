@@ -13,14 +13,14 @@ exports.showMovies = function(req, res) {
     });
 };
 
-exports.pinMovie = function(req, res) {
+exports.followMovie = function(req, res) {
   var movieId = req.body.movieId;
 
   Profile.findByUser(req.user)
     .exec(function (err, profile) {
       if (err) { return next(err); }
 
-      Profile.pinMovie(profile, movieId, function(err) {
+      Profile.followMovie(profile, movieId, function(err) {
         if (err) return next(err);
 
         res.send(200);
@@ -28,14 +28,14 @@ exports.pinMovie = function(req, res) {
     });
 };
 
-exports.unpinMovie = function(req, res) {
+exports.unfollowMovie = function(req, res) {
   var movieId = req.body.movieId;
 
   Profile.findByUser(req.user)
     .exec(function (err, profile) {
       if (err) return next(err);
 
-      Profile.unpinMovie(profile, movieId, function(err) {
+      Profile.unfollowMovie(profile, movieId, function(err) {
         if (err) return next(err);
 
         res.send(200);

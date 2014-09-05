@@ -6,12 +6,12 @@ angular.module('mementoMovieApp')
       $scope.movies = movies;
     });
 
-    $scope.pinMovie = function(movie) {
-      Profile.pinMovie(movie);
+    $scope.followMovie = function(movie) {
+      Profile.followMovie(movie);
     };
 
-    $scope.unpinMovie = function(movie) {
-      Profile.unpinMovie(movie);
+    $scope.unfollowMovie = function(movie) {
+      Profile.unfollowMovie(movie);
       $scope.movies = _.without($scope.movies, movie);
     };
   });

@@ -7,19 +7,19 @@ angular.module('mementoMovieApp')
         .then(function(res) {
           var movies = res.data;
           movies.forEach(function(movie) {
-            movie.pinned = true;
+            movie.following = true;
           });
           return movies;
         });
     };
 
-    this.pinMovie = function(movie) {
-      $http.post('/api/profiles/movies/pin', { movieId: movie._id });
-      movie.pinned = true;
+    this.followMovie = function(movie) {
+      $http.post('/api/profiles/movies/follow', { movieId: movie._id });
+      movie.following = true;
     };
 
-    this.unpinMovie = function(movie) {
-      $http.post('/api/profiles/movies/unpin', { movieId: movie._id });
-      movie.pinned = false;
+    this.unfollowMovie = function(movie) {
+      $http.post('/api/profiles/movies/unfollow', { movieId: movie._id });
+      movie.following = false;
     };
   });
