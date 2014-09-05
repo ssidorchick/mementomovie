@@ -5,7 +5,7 @@ var Profile = require('./profile.model');
 
 exports.showMovies = function(req, res) {
   Profile.findByUser(req.user)
-    .populate('movies')
+    .populate('movies', '', null, { sort: { theatrical_release_date: 1 } })
     .exec(function(err, profile) {
       if (err) { return handleError(res, err); }
 

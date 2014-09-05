@@ -6,6 +6,7 @@ var Movie = require('./movie.model');
 exports.index = function(req, res) {
   Movie.find()
     .select('name theatrical_release_date square_image')
+    .sort('theatrical_release_date')
     .exec(function (err, movies) {
       if (err) { return handleError(res, err); }
       return res.json(200, movies);
