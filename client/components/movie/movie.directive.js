@@ -6,7 +6,7 @@ angular.module('mementoMovieApp')
       templateUrl: 'components/movie/movie.html',
       restrict: 'EA',
       scope: {
-        data: '=',
+        model: '=',
         follow: '&',
         unfollow: '&'
       },
