@@ -1,6 +1,4 @@
 movie {
-  @mobile-button-follow-height: 50px;
-
   position: relative;
   display: block;
 
@@ -10,62 +8,61 @@ movie {
     width: 100%;
   }
 
-  .meta {
+  .bottom-container {
     position: absolute;
-    bottom: @mobile-button-follow-height;
+    bottom: 0;
     width: 100%;
-    padding: 10px 15px;
-    color: #fff;
-    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, .6));
 
-    @media (min-width: @screen-md-min) {
-      bottom: 0;
-    }
+    .meta {
+      padding: 10px 15px;
+      color: #fff;
+      background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, .6));
 
-    .info {
-      width: 65%;
-      text-shadow: 0 1px 0 #000, 0 1px 1px #000, 0 1px 1px #000;
+      .info {
+        width: 65%;
+        text-shadow: 0 1px 0 #000, 0 1px 1px #000, 0 1px 1px #000;
 
-      .name {
-        display: block;
-        font-weight: 700;
-        font-size: 21px;
-        line-height: 24px;
+        .name {
+          display: block;
+          font-weight: 700;
+          font-size: 21px;
+          line-height: 24px;
+        }
+
+        .release {
+          font-size: 14px;
+          line-height: 18px;
+          color: #d7d3d4;
+        }
       }
+    }
 
-      .release {
-        font-size: 14px;
-        line-height: 18px;
-        color: #d7d3d4;
+    .btn-follow {
+      &:extend(.btn all, .btn-primary all);
+
+      display: block;
+      height: 50px;
+      width: 100%;
+      font-size: 18px;
+      font-weight: 700;
+      border-radius: 0;
+
+      @media (min-width: @screen-md-min) {
+        display: none;
+        position: absolute;
+        right: 20px;
+        bottom: 30px;
+        height: 32px;
+        width: auto;
+        border-radius: 4px;
+        font-weight: 400;
+        font-size: 13px;
       }
     }
-  }
 
-  .btn-follow {
-    &:extend(.btn all, .btn-primary all);
-
-    display: block;
-    height: @mobile-button-follow-height;
-    width: 100%;
-    font-size: 18px;
-    font-weight: 700;
-    border-radius: 0;
-
-    @media (min-width: @screen-md-min) {
-      display: none;
-      position: absolute;
-      right: 20px;
-      bottom: 30px;
-      height: 32px;
-      width: auto;
-      border-radius: 4px;
-      font-weight: 400;
-      font-size: 13px;
+    .btn-follow.following {
+      display: inline-block;
     }
-  }
-
-  .btn-follow.following {
-    display: inline-block;
   }
 
   &:hover {
