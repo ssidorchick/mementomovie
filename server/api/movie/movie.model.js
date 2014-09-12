@@ -6,7 +6,7 @@ var mongoose = require('mongoose'),
 var MovieSchema = new Schema({
   name: String,
   theatrical_release_date: Date,
-  square_image: {
+  images: {
     w380: String
   }
 });
