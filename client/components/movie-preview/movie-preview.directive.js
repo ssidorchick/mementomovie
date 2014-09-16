@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('mementoMovieApp')
-  .directive('movie', function (Auth) {
+  .directive('moviePreview', function (Auth) {
     return {
-      templateUrl: 'components/movie/movie.html',
+      templateUrl: 'components/movie-preview/movie-preview.html',
       restrict: 'EA',
       scope: {
         model: '=',
