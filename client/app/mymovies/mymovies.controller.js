@@ -11,7 +11,9 @@ angular.module('mementoMovieApp')
     };
 
     $scope.unfollowMovie = function(movie) {
-      Profile.unfollowMovie(movie);
-      $scope.movies = _.without($scope.movies, movie);
+      Profile.unfollowMovie(movie)
+        .then(function() {
+          $scope.movies = _.without($scope.movies, movie);
+        });
     };
   });

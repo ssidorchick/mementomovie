@@ -14,12 +14,16 @@ angular.module('mementoMovieApp')
     };
 
     this.followMovie = function(movie) {
-      $http.post('/api/profiles/movies/follow', { movieId: movie._id });
-      movie.following = true;
+      return $http.post('/api/profiles/movies/follow', { movieId: movie._id })
+        .then(function() {
+          movie.following = true;
+        });
     };
 
     this.unfollowMovie = function(movie) {
-      $http.post('/api/profiles/movies/unfollow', { movieId: movie._id });
-      movie.following = false;
+      return $http.post('/api/profiles/movies/unfollow', { movieId: movie._id })
+        .then(function() {
+          movie.following = false;
+        });
     };
   });
