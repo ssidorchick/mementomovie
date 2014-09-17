@@ -13,6 +13,14 @@ exports.index = function(req, res) {
     });
 };
 
+exports.show = function (req, res) {
+  Movie.findById(req.params.id, function (err, movie) {
+    if (err) { return handleError(res, err); }
+    if (!movie) { return res.send(404); }
+    return res.json(movie);
+  });
+};
+
 function handleError(res, err) {
   return res.send(500, err);
 }

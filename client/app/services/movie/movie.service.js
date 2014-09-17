@@ -21,4 +21,9 @@ angular.module('mementoMovieApp')
         return fetchMovies();
       }
     };
+
+    this.get = function(id) {
+      return $http.get('/api/movies/' + id)
+        .then(function(res) { return res.data; });
+    };
   });

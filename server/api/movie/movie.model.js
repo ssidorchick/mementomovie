@@ -5,10 +5,15 @@ var mongoose = require('mongoose'),
 
 var MovieSchema = new Schema({
   name: String,
+  pitch: String,
+  description: String,
   theatrical_release_date: Date,
   images: {
-    w380: String
-  }
+    w380: String,
+    w600: String
+  },
+  actors: Array,
+  directors: Array
 });
 
 module.exports = mongoose.model('Movie', MovieSchema);
