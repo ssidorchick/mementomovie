@@ -18,30 +18,34 @@
     </div>
   </div>
 
-  <div class="wrap">
-    <div class="btn-follow-container">
-      <button class="btn-follow">Follow this movie</button>
-    </div>
-
-    <div class="content">
-      <h2 class="title">{{model.pitch | htmlToPlainText}}</h2>
-
-      <div ng-bind-html=model.description class="description"></div>
-
-      <div class="directors">
-        <strong>Directed by</strong>
-        <span>{{model.directors | join}}</span>
+  <div class="wrapper">
+    <div class="content-wrapper">
+      <div class="btn-follow-container">
+        <button ng-show="isLoggedIn() && !model.following" ng-click="followMovie()" class="btn-follow">Follow this movie</button>
+        <button ng-show="isLoggedIn() && model.following" ng-click="unfollowMovie()" class="btn-follow">Unfollow this movie</button>
       </div>
 
-      <div class="actors">
-        <strong>Starring</strong>
-        <span>{{model.actors | join}}</span>
+      <div class="content">
+        <h2 class="title">{{model.pitch | htmlToPlainText}}</h2>
+
+        <div ng-bind-html=model.description class="description"></div>
+
+        <div class="directors">
+          <strong>Directed by</strong>
+          <span>{{model.directors | join}}</span>
+        </div>
+
+        <div class="actors">
+          <strong>Starring</strong>
+          <span>{{model.actors | join}}</span>
+        </div>
       </div>
     </div>
 
     <aside class="sidebar">
       <div class="btn-follow-container">
-        <button class="btn-follow">Follow this movie</button>
+        <button ng-show="isLoggedIn() && !model.following" ng-click="followMovie()" class="btn-follow">Follow this movie</button>
+        <button ng-show="isLoggedIn() && model.following" ng-click="unfollowMovie()" class="btn-follow">Unfollow this movie</button>
       </div>
 
       <div class="directors">

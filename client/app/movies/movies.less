@@ -63,41 +63,45 @@
     }
   }
 
-  .wrap {
+  .wrapper {
     .row;
 
-    .btn-follow-container {
+    .content-wrapper {
       .make-md-column(8);
 
-      @media (min-width: @screen-md-min) {
-        display: none;
-      }
-    }
+      .btn-follow-container {
+        margin: 10px 0;
 
-    .content {
-      .make-md-column(8);
-
-      @media (min-width: @screen-sm-min) {
-        padding: 0 40px;
+        @media (min-width: @screen-md-min) {
+          display: none;
+        }
       }
 
-      @media (min-width: @screen-md-min) {
-        margin-top: 30px;
-      }
+      .content {
+        margin-top: 15px;
 
-      .title {
-        margin: 0;
-        font-size: 24px;
-        font-weight: bold;
-        color: #000;
-      }
+        @media (min-width: @screen-sm-min) {
+          padding: 0 40px;
+        }
 
-      .description {
-        margin-top: 5px;
+        @media (min-width: @screen-md-min) {
+          margin-top: 30px;
+        }
 
-        p {
-          margin: 1em 0;
-          line-height: 1.6em;
+        .title {
+          margin: 0;
+          font-size: 24px;
+          font-weight: bold;
+          color: #000;
+        }
+
+        .description {
+          margin-top: 5px;
+
+          p {
+            margin: 1em 0;
+            line-height: 1.6em;
+          }
         }
       }
 
@@ -122,12 +126,7 @@
       }
 
       .btn-follow-container {
-        margin: 30px 0;
-        width: 100%;
-
-        @media (min-width: @screen-md-min) {
-          display: block;
-        }
+        margin-top: 30px;
 
         .btn-follow {
           margin: 0 auto;
@@ -135,13 +134,13 @@
         }
       }
 
-      .actors {
+      .directors {
+        margin-top: 30px;
       }
     }
   }
 
   .btn-follow-container {
-    margin: 10px 0;
     width: 100%;
 
     .btn-follow {
