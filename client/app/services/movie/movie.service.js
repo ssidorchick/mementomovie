@@ -8,9 +8,13 @@ angular.module('mementoMovieApp')
     };
 
     var populateProfileMovies = function(result) {
-      return result[0].map(function(movie) {
-        return _.find(result[1], { _id: movie._id }) || movie;
-      });
+      if (_.isArray(result[0])) {
+        return result[0].map(function(movie) {
+          return _.find(result[1], { _id: movie._id }) || movie;
+        });
+      } else {
+        return _.find(result[1], { _id: result[0]._id }) || movie;
+      }
     };
 
     this.getAll = function() {
@@ -24,6 +28,15 @@ angular.module('mementoMovieApp')
 
     this.get = function(id) {
       return $http.get('/api/movies/' + id)
-        .then(function(res) { return res.data; });
+        .then(function(res) {
+          if (Auth.isLoggedIn()) {
+            var deferred = $q.defer();
+            deferred.resolve(res.data);
+            return $q.all([deferred.promise, Profile.getMovies()])
+              .then(populateProfileMovies);
+          } else {
+            return res.data;
+          }
+        });
     };
   });

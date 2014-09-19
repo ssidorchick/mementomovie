@@ -13,13 +13,6 @@ angular.module('mementoMovieApp')
         });
     };
 
-    this.updateFollowing = function(movie) {
-      return this.getMovies()
-        .then(function(movies) {
-          return _.find(movies, { _id: movie._id }) || movie;
-        });
-    };
-
     this.followMovie = function(movie) {
       return $http.post('/api/profiles/movies/follow', { movieId: movie._id })
         .then(function() {
