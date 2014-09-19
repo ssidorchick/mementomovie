@@ -13,7 +13,7 @@ angular.module('mementoMovieApp')
           return _.find(result[1], { _id: movie._id }) || movie;
         });
       } else {
-        return _.find(result[1], { _id: result[0]._id }) || movie;
+        return _.find(result[1], { _id: result[0]._id }) || result[0];
       }
     };
 
