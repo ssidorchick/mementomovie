@@ -37,7 +37,7 @@
 
         <div class="actors">
           <strong>Starring</strong>
-          <span>{{model.actors | join}}</span>
+          <span>{{model.actors | limitTo: 10 | join}}</span>
         </div>
       </div>
     </div>
@@ -48,17 +48,27 @@
         <button ng-show="isLoggedIn() && model.following" ng-click="unfollowMovie()" class="btn-follow">Unfollow this movie</button>
       </div>
 
-      <div class="directors">
-        <strong>Directed by</strong>
-        <span>{{model.directors | join}}</span>
-      </div>
+      <section class="cast-and-crew">
+        <h4>Cast & Crew</h4>
 
-      <div class="actors">
-        <strong>Starring</strong>
-        <ul>
-          <li ng-repeat="actor in model.actors">{{actor}}</li>
-        </ul>
-      </div>
+        <div class="directors">
+          <strong>Director</strong>
+          <ul>
+            <li ng-repeat="director in model.directors">
+              <strong>{{director}}</strong>
+            </li>
+          </ul>
+        </div>
+
+        <div class="actors">
+          <strong>Actors</strong>
+          <ul>
+            <li ng-repeat="actor in model.actors | limitTo: 10">
+              <strong>{{actor}}</strong>
+            </li>
+          </ul>
+        </div>
+      </section>
     </aside>
   </div>
 </div>

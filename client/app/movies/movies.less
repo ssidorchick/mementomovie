@@ -134,8 +134,48 @@
         }
       }
 
-      .directors {
-        margin-top: 30px;
+      .cast-and-crew {
+        margin: 30px 0 0 35px;
+
+        h4 {
+          margin: 0 0 0 -35px;
+          padding: 20px 40px;
+          position: relative;
+          background: #c33825;
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 20px;
+          color: #fff;
+        }
+
+        h4:after {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 100%;
+          border: 10px solid #882719;
+          border-left-color: transparent;
+          border-bottom-color: transparent;
+        }
+
+        strong {
+          font-size: 16px;
+          color: #666;
+        }
+
+        ul {
+          list-style-type: none;
+          padding-left: 20px;
+
+          strong {
+            font-weight: normal;
+            color: #333;
+          }
+        }
+
+        .directors {
+          margin-top: 30px;
+        }
       }
     }
   }
