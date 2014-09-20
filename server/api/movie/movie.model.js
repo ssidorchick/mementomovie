@@ -10,7 +10,8 @@ var MovieSchema = new Schema({
   theatrical_release_date: Date,
   images: {
     w380: String,
-    w600: String
+    w600: String,
+    w920: String
   },
   actors: Array,
   directors: Array

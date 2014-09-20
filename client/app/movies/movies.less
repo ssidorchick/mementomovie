@@ -1,68 +1,89 @@
-.movie {
-  .movie-cover {
-    position: relative;
-    overflow: hidden;
-    height: 400px;
-    border-radius: 3px;
+.movie-cover {
+  position: relative;
+  overflow: hidden;
+  height: 400px;
+  border-radius: 3px;
 
-    .sm-image {
-      min-width: 100%;
-      min-height: 100%;
-      background-size: cover;
+  @media (min-width: @screen-lg-min) {
+    padding: 0;
+    max-width: 100%;
+    border-radius: 0;
+    margin-top: -20px;
+  }
 
-      @media (min-width: @screen-sm-min) {
-        display: none;
-      }
-    }
+  .cover-image {
+    display: block;
+    min-width: 100%;
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+  }
 
-    .md-image {
-      display: block;
-      min-width: 100%;
-      min-height: 100%;
-      background-position: center;
-      background-size: cover;
+  .sm-image {
+    &:extend(.movie-cover .cover-image);
 
-      @media (max-width: @screen-sm-max) {
-        display: none;
-      }
-    }
-
-    .meta {
-      position: absolute;
-      overflow: hidden;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      padding: 20px 0;
-
-      .content {
-        color: #fff;
-        text-align: center;
-
-        .title {
-          display: inline-block;
-          position: relative;
-          margin: 0;
-          padding: 0;
-          font-size: 32px;
-          color: #fff;
-          line-height: 36px;
-          text-shadow: 0 1px 0 #000,0 1px 1px #000,0 1px 1px #000;
-        }
-
-        .release {
-          margin-top: 5px;
-          display: block;
-          font-weight: 400;
-          font-size: 14px;
-          line-height: 18px;
-          color: #d7d3d4;
-          text-shadow: 0 1px 0 #000,0 1px 1px #000,0 1px 1px #000;
-        }
-      }
+    @media (min-width: @screen-sm-min) {
+      display: none;
     }
   }
 
+  .md-image {
+    &:extend(.movie-cover .cover-image);
+
+    @media (max-width: @screen-sm-max) {
+      display: none;
+    }
+
+    @media (min-width: @screen-lg-min) {
+      display: none;
+    }
+  }
+
+  .lg-image {
+    &:extend(.movie-cover .cover-image);
+
+    @media (max-width: @screen-md-max) {
+      display: none;
+    }
+  }
+
+  .meta {
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 20px 0;
+
+    .content {
+      color: #fff;
+      text-align: center;
+
+      .title {
+        display: inline-block;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        font-size: 32px;
+        color: #fff;
+        line-height: 36px;
+        text-shadow: 0 1px 0 #000,0 1px 1px #000,0 1px 1px #000;
+      }
+
+      .release {
+        margin-top: 5px;
+        display: block;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        color: #d7d3d4;
+        text-shadow: 0 1px 0 #000,0 1px 1px #000,0 1px 1px #000;
+      }
+    }
+  }
+}
+
+.movie {
   .wrapper {
     .row;
 

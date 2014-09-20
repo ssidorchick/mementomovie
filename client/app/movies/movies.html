@@ -1,23 +1,24 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="container movie">
-  <div class="movie-cover">
-    <img ng-src="{{model.images.w380}}" class="sm-image">
-    <span back-img="{{model.images.w600}}" class="md-image" />
+<div class="container movie-cover">
+  <img ng-src="{{model.images.w380}}" class="sm-image">
+  <div back-img="{{model.images.w600}}" class="md-image" />
+  <div back-img="{{model.images.w920}}" class="lg-image" />
 
-    <div class="meta">
-      <div class="content">
-        <h1 class="title">{{model.name}}</h1>
+  <div class="meta">
+    <div class="content">
+      <h1 class="title">{{model.name}}</h1>
 
-        <div class="release">
-          In theaters <time datetime="{{model.theatrical_release_date | date:'yyyy-MM-dd'}}">
-            {{model.theatrical_release_date | ordinalDate}}
-          </time>
-        </div>
+      <div class="release">
+        In theaters <time datetime="{{model.theatrical_release_date | date:'yyyy-MM-dd'}}">
+          {{model.theatrical_release_date | ordinalDate}}
+        </time>
       </div>
     </div>
   </div>
+</div>
 
+<div class="container movie">
   <div class="wrapper">
     <div class="content-wrapper">
       <div class="btn-follow-container">
