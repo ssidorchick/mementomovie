@@ -22,8 +22,14 @@
   <div class="wrapper">
     <div class="content-wrapper">
       <div class="btn-follow-container">
-        <button ng-show="isLoggedIn() && !model.following" ng-click="followMovie()" class="btn-follow">Follow this movie</button>
-        <button ng-show="isLoggedIn() && model.following" ng-click="unfollowMovie()" class="btn-follow">Unfollow this movie</button>
+        <header ng-show="isLoggedIn()">
+          <button ng-show="!model.following" ng-click="followMovie()" class="btn-follow">Follow this movie</button>
+          <button ng-show="model.following" ng-click="unfollowMovie()" class="btn-follow">Unfollow this movie</button>
+        </header>
+        <div class="info">
+          <strong>{{model.followingCount}}</strong>
+          <span>Fans are following this movie</span>
+        </div>
       </div>
 
       <div class="content">
@@ -45,8 +51,14 @@
 
     <aside class="sidebar">
       <div class="btn-follow-container">
-        <button ng-show="isLoggedIn() && !model.following" ng-click="followMovie()" class="btn-follow">Follow this movie</button>
-        <button ng-show="isLoggedIn() && model.following" ng-click="unfollowMovie()" class="btn-follow">Unfollow this movie</button>
+        <header ng-show="isLoggedIn()">
+          <button ng-show="!model.following" ng-click="followMovie()" class="btn-follow">Follow this movie</button>
+          <button ng-show="model.following" ng-click="unfollowMovie()" class="btn-follow">Unfollow this movie</button>
+        </header>
+        <div class="info">
+          <strong>{{model.followingCount}}</strong>
+          <span>Fans are following this movie</span>
+        </div>
       </div>
 
       <section class="cast-and-crew">

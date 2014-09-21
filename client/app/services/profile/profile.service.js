@@ -17,6 +17,7 @@ angular.module('mementoMovieApp')
       return $http.post('/api/profiles/movies/follow', { movieId: movie._id })
         .then(function() {
           movie.following = true;
+          movie.followingCount += 1;
         });
     };
 
@@ -24,6 +25,7 @@ angular.module('mementoMovieApp')
       return $http.post('/api/profiles/movies/unfollow', { movieId: movie._id })
         .then(function() {
           movie.following = false;
+          movie.followingCount -= 1;
         });
     };
   });

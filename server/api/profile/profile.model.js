@@ -14,23 +14,24 @@ ProfileSchema.statics.findByUser = function(user, cb) {
 };
 
 ProfileSchema.statics.followMovie = function(profile, movieId, cb) {
-  Movie.findById(movieId, function(err, movie) {
+  Movie.findByIdAndUpdate(movieId, { $inc: { followingCount: 1 } }, function(err, movie) {
     if (err) { return cb(err); }
 
     profile.movies.push(movie);
     profile.save(function(err) {
-      return cb(err);
+      cb(err);
     });
   });
 };
 
 ProfileSchema.statics.unfollowMovie = function(profile, movieId, cb) {
-  Movie.findById(movieId, function(err, movie) {
+  Movie.findByIdAndUpdate(movieId, { $inc: { followingCount: -1 } }, function(err, movie) {
     if (err) { return cb(err); }
+    if (!movie) { return; }
 
-    profile.movies.remove(movieId);
+    profile.movies.remove(movie);
     profile.save(function(err) {
-      return cb(err);
+      cb(err);
     });
   });
 };

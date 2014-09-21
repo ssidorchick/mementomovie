@@ -14,7 +14,8 @@ var MovieSchema = new Schema({
     w920: String
   },
   actors: Array,
-  directors: Array
+  directors: Array,
+  followingCount: { type: Number, default: 0 }
 });
 
 module.exports = mongoose.model('Movie', MovieSchema);
