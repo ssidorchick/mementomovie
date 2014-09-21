@@ -1,8 +1,6 @@
 .movie-cover {
   position: relative;
-  overflow: hidden;
   height: 400px;
-  border-radius: 3px;
 
   @media (min-width: @screen-lg-min) {
     padding: 0;
@@ -17,6 +15,7 @@
     min-height: 100%;
     background-position: center;
     background-size: cover;
+    border-radius: 4px;
   }
 
   .sm-image {
@@ -30,17 +29,14 @@
   .md-image {
     &:extend(.movie-cover .cover-image);
 
-    @media (max-width: @screen-sm-max) {
-      display: none;
-    }
-
-    @media (min-width: @screen-lg-min) {
+    @media (max-width: @screen-sm-max), (min-width: @screen-lg-min) {
       display: none;
     }
   }
 
   .lg-image {
     &:extend(.movie-cover .cover-image);
+    border-radius: 0;
 
     @media (max-width: @screen-md-max) {
       display: none;
@@ -67,7 +63,7 @@
         font-size: 32px;
         color: #fff;
         line-height: 36px;
-        text-shadow: 0 1px 0 #000,0 1px 1px #000,0 1px 1px #000;
+        text-shadow: 0 1px 0 #000, 0 1px 1px #000, 0 1px 1px #000;
       }
 
       .release {
@@ -77,7 +73,7 @@
         font-size: 14px;
         line-height: 18px;
         color: #d7d3d4;
-        text-shadow: 0 1px 0 #000,0 1px 1px #000,0 1px 1px #000;
+        text-shadow: 0 1px 0 #000, 0 1px 1px #000, 0 1px 1px #000;
       }
     }
   }
