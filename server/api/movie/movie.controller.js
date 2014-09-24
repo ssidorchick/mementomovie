@@ -2,14 +2,20 @@
 
 var _ = require('lodash');
 var Movie = require('./movie.model');
+require('mongoose-query-paginate');
 
 exports.index = function(req, res) {
+  var paginationOptions = {
+    page: req.query.page,
+    perPage: req.query.perPage
+  };
+
   Movie.find()
     .select('name theatrical_release_date images')
     .sort('theatrical_release_date')
-    .exec(function (err, movies) {
+    .paginate(paginationOptions, function(err, data) {
       if (err) { return handleError(res, err); }
-      return res.json(200, movies);
+      return res.json(200, data);
     });
 };
 

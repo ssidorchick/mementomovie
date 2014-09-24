@@ -2,8 +2,8 @@
 
 angular.module('mementoMovieApp')
   .service('Movie', function ($http, $q, Auth, Profile) {
-    var fetchMovies = function() {
-      return $http.get('/api/movies')
+    var fetchMovies = function(options) {
+      return $http.get('/api/movies', { params: options })
         .then(function(res) { return res.data; });
     };
 
@@ -17,12 +17,12 @@ angular.module('mementoMovieApp')
       }
     };
 
-    this.getAll = function() {
+    this.getAll = function(options) {
       if (Auth.isLoggedIn()) {
-        return $q.all([fetchMovies(), Profile.getMovies()])
+        return $q.all([fetchMovies(options), Profile.getMovies()])
           .then(populateProfileMovies);
       } else {
-        return fetchMovies();
+        return fetchMovies(options);
       }
     };
 

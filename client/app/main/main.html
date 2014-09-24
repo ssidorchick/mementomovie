@@ -7,5 +7,9 @@
         <movie-preview model="movie" follow="followMovie(movie)" unfollow="unfollowMovie(movie)" />
       </li>
     </ul>
+
+    <div class="show-more-container">
+      <button ng-click="showMore()" ng-show="hasMoreMovies()" class="show-more">Show more</button>
+    </div>
   </div>
 </div>

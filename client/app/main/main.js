@@ -6,6 +6,11 @@ angular.module('mementoMovieApp')
       .state('main', {
         url: '/',
         templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        resolve: {
+          PaginatedMovie: function(Movie, Pagination) {
+            return new Pagination(Movie);
+          }
+        }
       });
   });
