@@ -2,6 +2,12 @@
 
 angular.module('mementoMovieApp')
   .service('Movie', function ($http, $q, Auth, Profile) {
+    var filterTitles = {
+      year: 'Filter by Year',
+      director: 'Filter by Director',
+      actor: 'Filter by Actor'
+    };
+
     var fetchMovies = function(options) {
       return $http.get('/api/movies', { params: options })
         .then(function(res) { return res.data; });
@@ -37,6 +43,20 @@ angular.module('mementoMovieApp')
           } else {
             return res.data;
           }
+        });
+    };
+
+    this.getFilters = function() {
+      return $http.get('/api/movies/filters')
+        .then(function(res) {
+          return _.map(res.data, function(value, key) {
+            return {
+              dropdownKey: key + 'FilterMenu',
+              collapseKey: 'is' + key + 'FilterCollapsed',
+              title: filterTitles[key],
+              value: value
+            };
+          });
         });
     };
   });

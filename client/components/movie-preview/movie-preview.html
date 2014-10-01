@@ -5,7 +5,7 @@
   <div class="meta">
     <div class="info">
       <span class="name">{{model.name}}</span>
-      <span class="release">{{model.theatrical_release_date | date:'yyyy-MM-dd'}}</span>
+      <span class="release">{{model.theatrical_release_date}}</span>
     </div>
   </div>
   <button ng-show="isLoggedIn() && !model.following" ng-click="follow(this)" class="btn-follow">Follow</button>

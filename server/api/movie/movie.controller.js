@@ -27,6 +27,13 @@ exports.show = function (req, res) {
   });
 };
 
+exports.filters = function(req, res) {
+  Movie.getFilters(function(err, filters) {
+    if (err) { return handleError(res, err); }
+    return res.json(filters);
+  });
+};
+
 function handleError(res, err) {
   return res.send(500, err);
 }

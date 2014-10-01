@@ -31,5 +31,9 @@ angular.module('mementoMovieApp')
         }.bind(this));
     };
 
+    ctor.prototype.getService = function() {
+      return this._service;
+    };
+
     return ctor;
   });
