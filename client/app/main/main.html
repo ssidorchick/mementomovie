@@ -1,6 +1,41 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container">
+  <section class="filters-container mobile">
+    <div class="btn-group btn-group-justified">
+      <div ng-repeat="filter in filters" class="btn-group">
+        <button ng-click="filterClick(filter.collapseKey)"
+                type="button" class="btn btn-primary">
+          {{filter.title}}
+        </button>
+      </div>
+    </div>
+
+    <div ng-repeat="filter in filters" collapse="!{{filter.collapseKey}}" class="navbar-collapse collapse">
+      <ul>
+        <li ng-repeat="item in filter.value">
+          <a href="#">{{item}}</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="filters-container desktop">
+    <div ng-repeat="filter in filters" class="filter dropdown">
+      <button id="{{filter.dropdownKey}}" type="button"
+              class="filter-type dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-bars" />
+        {{filter.title}}
+      </button>
+
+      <ul role="menu" aria-labelledby="{{filter.dropdownKey}}" class="dropdown-menu">
+        <li ng-repeat="item in filter.value" role="presentation">
+          <a role="menuitem" href="#" class="filter-value">{{item}}</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
   <div class="movies-container">
     <ul class="movies">
       <li ng-repeat="movie in movies" class="movie-container">
