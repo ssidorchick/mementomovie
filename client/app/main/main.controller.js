@@ -17,16 +17,6 @@ angular.module('mementoMovieApp')
         $scope.filters = filters;
       });
 
-    $scope.filterClick = function(filter) {
-      var prevValue = $scope[filter];
-
-      _.each($scope.filters, function(filter) {
-        $scope[filter.collapseKey] = false;
-      });
-
-      $scope[filter] = !prevValue;
-    };
-
     $scope.hasMoreMovies = function() { return PaginatedMovie.hasMore; };
 
     $scope.followMovie = function(movie) {
