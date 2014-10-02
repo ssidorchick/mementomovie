@@ -3,9 +3,9 @@
 angular.module('mementoMovieApp')
   .service('Movie', function ($http, $q, Auth, Profile) {
     var filterTitles = {
-      year: 'Filter by Year',
-      director: 'Filter by Director',
-      actor: 'Filter by Actor'
+      year: 'All Years',
+      director: 'All Directors',
+      actor: 'All Actors'
     };
 
     var fetchMovies = function(options) {
@@ -51,6 +51,7 @@ angular.module('mementoMovieApp')
         .then(function(res) {
           return _.map(res.data, function(value, key) {
             return {
+              key: key,
               dropdownKey: key + 'FilterMenu',
               collapseKey: 'is' + key + 'FilterCollapsed',
               title: filterTitles[key],

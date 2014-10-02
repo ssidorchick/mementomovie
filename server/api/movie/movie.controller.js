@@ -5,12 +5,29 @@ var Movie = require('./movie.model');
 require('mongoose-query-paginate');
 
 exports.index = function(req, res) {
+  var query = req.query;
   var paginationOptions = {
-    page: req.query.page,
-    perPage: req.query.perPage
+    page: query.page,
+    perPage: query.perPage
   };
 
-  Movie.find()
+  var findOptions = {};
+  if (query.year) {
+    var reYear = query.year;
+    // NOTE: Check for the latest release year and add paramter to query TBA movies.
+    if (query.year === '2019') {
+      reYear += '|' + 9999;
+    }
+    findOptions.theatrical_release_date = new RegExp(reYear);
+  }
+  if (query.director) {
+    findOptions.directors = query.director;
+  }
+  if (query.actor) {
+    findOptions.actors = query.actor;
+  }
+
+  Movie.find(findOptions)
     .select('name theatrical_release_date images')
     .sort('theatrical_release_date')
     .paginate(paginationOptions, function(err, data) {

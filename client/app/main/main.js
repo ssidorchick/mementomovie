@@ -4,7 +4,7 @@ angular.module('mementoMovieApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('main', {
-        url: '/',
+        url: '/?year&director&actor',
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl',
         resolve: {

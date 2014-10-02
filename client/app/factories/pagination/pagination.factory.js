@@ -10,9 +10,11 @@ angular.module('mementoMovieApp')
         perPage: 12,
         page: 1
       };
+      this._params = {};
     };
 
-    ctor.prototype.getItems = function() {
+    ctor.prototype.getItems = function(params) {
+      this._params = params;
       return this.loadMore()
         .then(function() {
           return this._items;
@@ -20,7 +22,7 @@ angular.module('mementoMovieApp')
     };
 
     ctor.prototype.loadMore = function() {
-      return this._service.getAll(this._options)
+      return this._service.getAll(_.extend(this._options, this._params))
         .then(function(data) {
           this.hasMore = data.current < data.last;
 

@@ -1,8 +1,13 @@
 'use strict';
 
 angular.module('mementoMovieApp')
-  .controller('MainCtrl', function ($scope, Profile, PaginatedMovie) {
-    PaginatedMovie.getItems()
+  .controller('MainCtrl', function ($scope, $stateParams, Profile, PaginatedMovie) {
+    $scope.selectedFilter = _.chain($stateParams)
+      .map(function(value, key) { return { key: key, value: value }; })
+      .find(function(item) { return item.key && item.value; })
+      .value();
+
+    PaginatedMovie.getItems($stateParams)
       .then(function(movies) {
         $scope.movies = movies;
       });
