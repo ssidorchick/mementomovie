@@ -2,14 +2,14 @@
   <div class="btn-group btn-group-justified">
     <div class="btn-group">
       <button type="button" class="btn btn-primary">
-        <a href="/">All movies</a>
+        <a href="/"><strong>All</strong><span> movies</span></a>
       </button>
     </div>
 
     <div ng-repeat="filter in filters" class="btn-group">
       <button ng-click="filterClick(filter.collapseKey)"
+              ng-bind-html="filter | formatHeader : selectedFilter"
               type="button" class="btn btn-primary">
-        {{selectedFilter && selectedFilter.key === filter.key ? selectedFilter.value : filter.title}}
       </button>
     </div>
   </div>
@@ -18,7 +18,7 @@
     <ul>
       <li ng-repeat="item in filter.value">
         <a ng-href="/?{{filter.key}}={{item}}">
-          {{filter.key === 'year' && $last ? item + ' and later' : item}}
+          {{item | formatValue: filter : $last}}
         </a>
       </li>
     </ul>

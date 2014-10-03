@@ -3,9 +3,9 @@
 angular.module('mementoMovieApp')
   .service('Movie', function ($http, $q, Auth, Profile) {
     var filterTitles = {
-      year: 'All Years',
-      director: 'All Directors',
-      actor: 'All Actors'
+      year: 'Years',
+      director: 'Directors',
+      actor: 'Actors'
     };
 
     var fetchMovies = function(options) {

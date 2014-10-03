@@ -3,8 +3,9 @@
 angular.module('mementoMovieApp')
   .controller('MainCtrl', function ($scope, $stateParams, Profile, PaginatedMovie) {
     $scope.selectedFilter = _.chain($stateParams)
+      .omit(function(value) { return !value; })
       .map(function(value, key) { return { key: key, value: value }; })
-      .find(function(item) { return item.key && item.value; })
+      .first()
       .value();
 
     PaginatedMovie.getItems($stateParams)

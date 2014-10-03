@@ -1,23 +1,22 @@
 <section class="filters-container desktop">
   <div class="filter">
-    <button class="filter-type">
+    <button class="filter-header">
       <a href="/">All movies</a>
     </button>
   </div>
 
   <div ng-repeat="filter in filters" class="filter dropdown">
     <button id="{{filter.dropdownKey}}" type="button"
-            class="filter-type dropdown-toggle" data-toggle="dropdown">
-      <i class="fa fa-bars" />
-        {{selectedFilter && selectedFilter.key === filter.key ? selectedFilter.value : filter.title}}
-      </button>
+            ng-bind-html="filter | formatHeader : selectedFilter : true"
+            class="filter-header dropdown-toggle" data-toggle="dropdown">
+    </button>
 
-      <ul role="menu" aria-labelledby="{{filter.dropdownKey}}" class="dropdown-menu">
-        <li ng-repeat="item in filter.value" role="presentation">
-          <a role="menuitem" ng-href="/?{{filter.key}}={{item}}" class="filter-value">
-            {{filter.key === 'year' && $last ? item + ' and later' : item}}
-          </a>
-        </li>
-      </ul>
+    <ul role="menu" aria-labelledby="{{filter.dropdownKey}}" class="dropdown-menu">
+      <li ng-repeat="item in filter.value" role="presentation">
+        <a role="menuitem" ng-href="/?{{filter.key}}={{item}}" class="filter-value">
+          {{item | formatValue: filter : $last}}
+        </a>
+      </li>
+    </ul>
   </div>
 </section>

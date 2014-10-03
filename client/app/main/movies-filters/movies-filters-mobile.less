@@ -9,18 +9,40 @@
     display: none;
   }
 
-  .btn-group {
+  .btn-group-justified {
     .btn-group {
+      &:first-child {
+        width: 0.5%;
+
+        @media (min-width: 500px) {
+          width: 1%;
+        }
+      }
+
       .btn {
+        .text-overflow();
+        padding: 0;
         height: 50px;
         font-size: 18px;
         font-weight: 700;
         border-radius: 0;
         border: none;
 
+        @media (min-width: 500px) {
+          padding: 10px;
+        }
+
         a {
           color: @btn-primary-color;
           text-decoration: none;
+        }
+
+        span {
+          display: none;
+
+          @media (min-width: 500px) {
+            display: initial;
+          }
         }
       }
     }
