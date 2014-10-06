@@ -3,7 +3,7 @@
 angular.module('mementoMovieApp')
   .directive('moviesFilters', function () {
     return {
-      templateUrl: 'app/main/movies-filters/movies-filters.html',
+      templateUrl: 'app/movies/movies-filters/movies-filters.html',
       restrict: 'E',
       scope: {
         filters: '=',

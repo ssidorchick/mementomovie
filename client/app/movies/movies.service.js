@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mementoMovieApp')
-  .service('Movie', function ($http, $q, Auth, Profile) {
+  .service('Movies', function ($http, $q, Auth, Profile) {
     var filterTitles = {
       year: 'Years',
       director: 'Directors',
