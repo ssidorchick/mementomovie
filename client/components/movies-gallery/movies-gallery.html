@@ -1,0 +1,9 @@
+<ul class="movies">
+  <li ng-repeat="movie in model" class="movie-container">
+    <movie-preview model="movie" follow="followMovie({movie:movie})" unfollow="unfollowMovie({movie:movie})" />
+  </li>
+</ul>
+
+<div class="show-more-container">
+  <button ng-click="showMore()" ng-show="hasMoreMovies()" class="show-more">Show more</button>
+</div>

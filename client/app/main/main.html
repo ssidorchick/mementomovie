@@ -1,18 +1,8 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container main">
-
   <movies-filters filters="filters" selected-filter="selectedFilter"></movies-filters>
 
-  <div class="movies-container">
-    <ul class="movies">
-      <li ng-repeat="movie in movies" class="movie-container">
-        <movie-preview model="movie" follow="followMovie(movie)" unfollow="unfollowMovie(movie)" />
-      </li>
-    </ul>
-
-    <div class="show-more-container">
-      <button ng-click="showMore()" ng-show="hasMoreMovies()" class="show-more">Show more</button>
-    </div>
-  </div>
+  <movies-gallery model="movies" follow-movie="followMovie(movie)" unfollow-movie="unfollowMovie(movie)"
+                  has-more-movies="hasMoreMovies()" show-more="showMore()" />
 </div>
