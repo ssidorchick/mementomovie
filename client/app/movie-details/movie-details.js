@@ -3,9 +3,9 @@
 angular.module('mementoMovieApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('movies', {
+      .state('movie-details', {
         url: '/movies/:id',
-        templateUrl: 'app/movies/movies.html',
-        controller: 'MoviesCtrl'
+        templateUrl: 'app/movie-details/movie-details.html',
+        controller: 'MovieDetailsCtrl'
       });
   });
