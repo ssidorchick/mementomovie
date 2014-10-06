@@ -3,7 +3,7 @@
 angular.module('mementoMovieApp')
   .directive('moviePreview', function (Auth) {
     return {
-      templateUrl: 'components/movie-preview/movie-preview.html',
+      templateUrl: 'components/directives/movie-preview/movie-preview.html',
       restrict: 'EA',
       scope: {
         model: '=',

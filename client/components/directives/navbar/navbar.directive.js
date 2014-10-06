@@ -3,7 +3,7 @@
 angular.module('mementoMovieApp')
   .directive('navbar', function (Auth) {
     return {
-      templateUrl: 'components/navbar/navbar.html',
+      templateUrl: 'components/directives/navbar/navbar.html',
       restrict: 'EA',
       controller: function ($scope, $location) {
         $scope.menu = [
