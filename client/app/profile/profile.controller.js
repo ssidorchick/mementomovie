@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mementoMovieApp')
-  .controller('MymoviesCtrl', function ($scope, Profile) {
+  .controller('ProfileCtrl', function ($scope, Profile) {
     Profile.getMovies().then(function(movies) {
       $scope.movies = movies;
     });

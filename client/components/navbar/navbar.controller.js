@@ -9,7 +9,7 @@ angular.module('mementoMovieApp')
       },
       {
         'title': 'My Movies',
-        'link': '/mymovies',
+        'link': '/profile',
         'whenLoggedIn': true
       }
     ];
