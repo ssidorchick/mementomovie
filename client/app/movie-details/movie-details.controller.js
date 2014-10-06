@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('mementoMovieApp')
-  .controller('MovieDetailsCtrl', function ($scope, $stateParams, Auth, Movie, Profile) {
-    Movie.get($stateParams.id)
+  .controller('MovieDetailsCtrl', function ($scope, $stateParams, Auth, Movies, Profile) {
+    Movies.get($stateParams.id)
       .then(function(movie) {
         $scope.model = movie;
     });
