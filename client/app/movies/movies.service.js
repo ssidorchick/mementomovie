@@ -14,10 +14,11 @@ angular.module('mementoMovieApp')
     };
 
     var populateProfileMovies = function(result) {
-      if (_.isArray(result[0])) {
-        return result[0].map(function(movie) {
+      if (_.isArray(result[0].results)) {
+        result[0].results = result[0].results.map(function(movie) {
           return _.find(result[1], { _id: movie._id }) || movie;
         });
+        return result[0];
       } else {
         return _.find(result[1], { _id: result[0]._id }) || result[0];
       }
