@@ -8,9 +8,9 @@ angular.module('mementoMovieApp')
         templateUrl: 'app/movies/movies.html',
         controller: 'MoviesCtrl',
         resolve: {
-          PaginatedMovies: function(Movies, Pagination) {
+          PaginatedMovies: ['Movies', 'Pagination', function(Movies, Pagination) {
             return new Pagination(Movies);
-          }
+          }]
         }
       });
   });
