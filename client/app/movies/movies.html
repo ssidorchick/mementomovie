@@ -1,8 +1,9 @@
-<navbar />
+<navbar></navbar>
 
 <div class="container movies">
   <movies-filters filters="filters" selected-filter="selectedFilter"></movies-filters>
 
   <movies-gallery model="movies" follow-movie="followMovie(movie)" unfollow-movie="unfollowMovie(movie)"
-                  has-more-movies="hasMoreMovies()" show-more="showMore()" />
+                  has-more-movies="hasMoreMovies()" show-more="showMore()">
+  </movies-gallery>
 </div>
