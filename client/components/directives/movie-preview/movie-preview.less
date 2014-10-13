@@ -14,6 +14,7 @@ movie-preview {
     position: absolute;
     bottom: 0;
     width: 100%;
+    pointer-events: none;
 
     .meta {
       padding: 10px 15px;
@@ -41,6 +42,7 @@ movie-preview {
 
     .btn-follow {
       &:extend(.btn all, .btn-primary all);
+      pointer-events: auto;
 
       display: block;
       height: 50px;
