@@ -25,25 +25,31 @@ angular.module('mementoMovieApp')
     };
 
     this.getAll = function(options) {
-      if (Auth.isLoggedIn()) {
-        return $q.all([fetchMovies(options), Profile.getMovies()])
-          .then(populateProfileMovies);
-      } else {
-        return fetchMovies(options);
-      }
+      return Auth.isLoggedInPromise()
+        .then(function(isLoggedIn) {
+          if (isLoggedIn) {
+            return $q.all([fetchMovies(options), Profile.getMovies()])
+              .then(populateProfileMovies);
+          } else {
+            return fetchMovies(options);
+          }
+        });
     };
 
     this.get = function(permalink) {
       return $http.get('/api/movies/' + permalink, { cache: true })
         .then(function(res) {
-          if (Auth.isLoggedIn()) {
-            var deferred = $q.defer();
-            deferred.resolve(res.data);
-            return $q.all([deferred.promise, Profile.getMovies()])
-              .then(populateProfileMovies);
-          } else {
-            return res.data;
-          }
+          Auth.isLoggedInPromise()
+            .then(function(isLoggedIn) {
+              if (isLoggedIn) {
+              var deferred = $q.defer();
+              deferred.resolve(res.data);
+              return $q.all([deferred.promise, Profile.getMovies()])
+                .then(populateProfileMovies);
+              } else {
+                return res.data;
+              }
+            });
         });
     };
 

@@ -111,6 +111,27 @@ angular.module('mementoMovieApp')
       },
 
       /**
+       * Waits for currentUser to resolve before checking if user is logged in
+       */
+      isLoggedInPromise: function() {
+        var deferred = $q.defer();
+
+        if(currentUser.hasOwnProperty('$promise')) {
+          currentUser.$promise.then(function() {
+            deferred.resolve(true);
+          }).catch(function() {
+            deferred.resolve(false);
+          });
+        } else if(currentUser.hasOwnProperty('role')) {
+          deferred.resolve(true);
+        } else {
+          deferred.resolve(false);
+        }
+
+        return deferred.promise;
+      },
+
+      /**
        * Check if a user is an admin
        *
        * @return {Boolean}
