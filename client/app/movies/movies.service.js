@@ -39,7 +39,7 @@ angular.module('mementoMovieApp')
     this.get = function(permalink) {
       return $http.get('/api/movies/' + permalink, { cache: true })
         .then(function(res) {
-          Auth.isLoggedInPromise()
+          return Auth.isLoggedInPromise()
             .then(function(isLoggedIn) {
               if (isLoggedIn) {
               var deferred = $q.defer();
