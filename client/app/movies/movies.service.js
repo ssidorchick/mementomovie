@@ -9,7 +9,7 @@ angular.module('mementoMovieApp')
     };
 
     var fetchMovies = function(options) {
-      return $http.get('/api/movies', { params: options })
+      return $http.get('/api/movies', { params: options, cache: true})
         .then(function(res) { return res.data; });
     };
 
@@ -34,7 +34,7 @@ angular.module('mementoMovieApp')
     };
 
     this.get = function(permalink) {
-      return $http.get('/api/movies/' + permalink)
+      return $http.get('/api/movies/' + permalink, { cache: true })
         .then(function(res) {
           if (Auth.isLoggedIn()) {
             var deferred = $q.defer();
@@ -48,7 +48,7 @@ angular.module('mementoMovieApp')
     };
 
     this.getFilters = function() {
-      return $http.get('/api/movies/filters')
+      return $http.get('/api/movies/filters', { cache: true })
         .then(function(res) {
           return _.map(res.data, function(value, key) {
             return {
