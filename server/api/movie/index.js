@@ -8,6 +8,6 @@ var router = express.Router();
 
 router.get('/', controller.index);
 router.get('/filters', controller.filters);
-router.get('/:id', controller.show);
+router.get('/:permalink', controller.show);
 
 module.exports = router;

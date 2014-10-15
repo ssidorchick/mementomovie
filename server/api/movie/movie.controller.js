@@ -28,7 +28,7 @@ exports.index = function(req, res) {
   }
 
   Movie.find(findOptions)
-    .select('name theatrical_release_date images')
+    .select('permalink name theatrical_release_date images')
     .sort('theatrical_release_date')
     .paginate(paginationOptions, function(err, data) {
       if (err) { return handleError(res, err); }
@@ -37,11 +37,13 @@ exports.index = function(req, res) {
 };
 
 exports.show = function (req, res) {
-  Movie.findById(req.params.id, function (err, movie) {
-    if (err) { return handleError(res, err); }
-    if (!movie) { return res.send(404); }
-    return res.json(movie);
-  });
+  Movie.findByPermalink(req.params.permalink)
+    .select('-__v')
+    .exec(function (err, movie) {
+      if (err) { return handleError(res, err); }
+      if (!movie) { return res.send(404); }
+      return res.json(movie);
+    });
 };
 
 exports.filters = function(req, res) {

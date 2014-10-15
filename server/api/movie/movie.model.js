@@ -6,6 +6,7 @@ var mongoose = require('mongoose'),
     _ = require('lodash');
 
 var MovieSchema = new Schema({
+  permalink: String,
   name: String,
   pitch: String,
   description: String,
@@ -19,6 +20,10 @@ var MovieSchema = new Schema({
   directors: Array,
   followingCount: { type: Number, default: 0 }
 });
+
+MovieSchema.statics.findByPermalink = function(permalink) {
+  return this.findOne({ permalink: permalink });
+};
 
 MovieSchema.statics.getFilters = function(cb) {
   var years = this.aggregate()

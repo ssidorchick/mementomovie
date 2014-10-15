@@ -4,7 +4,7 @@ angular.module('mementoMovieApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('movie-details', {
-        url: '/movies/:id',
+        url: '/movies/:permalink',
         templateUrl: 'app/movie-details/movie-details.html',
         controller: 'MovieDetailsCtrl'
       });

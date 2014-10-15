@@ -33,8 +33,8 @@ angular.module('mementoMovieApp')
       }
     };
 
-    this.get = function(id) {
-      return $http.get('/api/movies/' + id)
+    this.get = function(permalink) {
+      return $http.get('/api/movies/' + permalink)
         .then(function(res) {
           if (Auth.isLoggedIn()) {
             var deferred = $q.defer();

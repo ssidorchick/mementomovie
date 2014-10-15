@@ -2,7 +2,7 @@
 
 angular.module('mementoMovieApp')
   .controller('MovieDetailsCtrl', function ($scope, $stateParams, Auth, Movies, Profile) {
-    Movies.get($stateParams.id)
+    Movies.get($stateParams.permalink)
       .then(function(movie) {
         $scope.model = movie;
     });
